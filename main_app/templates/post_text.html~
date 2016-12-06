@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    История
+{% endblock %}
+{% block info %}
+    {% load static %}   
+
+    <div>
+    {{ post_text }}
+    </div>
+    <br><br>
+    {{ comments }}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}
+    Регистрация нового пользователя
+{% endblock %}
+{% block info %}
+    <h3>Заполните форму и сохраните внесённые изменения</h3>
+
+    <form method="post" role="form" action="/user/registration/"> 
+        <div class="form_settings">
+        {% include 'reg_form_include.html' %}            
+        <input type="submit" class = "submit" style = "margin-left:365px;" value="Сохранить">
+        </div>
+    </form>
+{% endblock %}
+

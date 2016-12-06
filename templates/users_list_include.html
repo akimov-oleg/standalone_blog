@@ -1,0 +1,17 @@
+<table border="1">
+{% for user in users %}
+<tr>
+    <td style="width:200px; padding: 2px;">
+        {{ user }}
+    </td>
+    <td>
+        <button type="button" class = "edit" 
+            onclick="fill_form({{ user.id }})">            
+        </button>
+    </td>
+    <td>
+        <a href="delete/user/{{ user.id }}" class="delete"></a>
+    </td>
+</tr>    
+{% endfor %}
+</table>

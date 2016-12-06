@@ -1,0 +1,23 @@
+{% extends "base_admin.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            Публикации:
+            <br>
+            <a href="/admin/create/post/">Создать новую публикацию</a>
+            <br>
+            <hr>
+            <table>
+                {% for i in posts %}
+                <tr>                
+                    <td width="200px">{{ i.date|date:"d b Y" }}</td>  
+                    <td width="400px"><a href = "/admin/update/post/{{ i.pk }}">{{ i.header }}</a></td>                
+                <td width="200px">
+                    <a href="/admin/delete/post/{{ i.pk }}">Удалить</a>
+                </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>    
+{% endblock %}

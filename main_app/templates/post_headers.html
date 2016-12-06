@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    История
+{% endblock %}
+{% block info %}
+    {% load static %}   
+
+    <div class="paginator_posts">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ posts.number }} из {{ posts.paginator.num_pages }}
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Вперёд</a>
+        {% endif %}
+    </div>
+
+    {% if posts %}
+        {% for i in posts %}
+            <div style="width: 75%; height: 30px; float: left; border-bottom: 1px solid black; padding-top:25px;">
+                <h4><a href="/post_text/{{ i.pk }}">{{ i.header }}</a></h4>
+            </div>
+            <div style="width: 20%; height: 30px; float: left; border-bottom: 1px solid black; padding-top:25px;">
+                <h4>{{ i.date }}</h4>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        Нет данных
+    {% endif %}
+
+    
+
+{% endblock %}

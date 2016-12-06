@@ -1,0 +1,33 @@
+.ico img{
+    width: 40px;
+}
+.home-img img{
+    max-width: 100%;
+}
+.error{
+    color: red;
+}
+
+ul > li{
+    list-style-type: none;
+}
+.gem_container img{
+    width: 30px;
+}
+
+.edit{
+  display: block;
+  width: 25px; 
+  height: 25px;       
+  background-image: url(../img/edit.jpg);
+  background-size: 100%;
+  /*float: left;*/
+}
+.delete{
+  display: block;
+  width: 25px; 
+  height: 25px;       
+  background-image: url(../img/delete.jpg);
+  background-size: 100%;
+  /*float: left;*/
+}

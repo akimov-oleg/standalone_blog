@@ -1,0 +1,30 @@
+from django.shortcuts import render
+from .models import Post, Comment
+
+# Create your views here.
+def post_headers(request):
+    
+    dic_info ={     
+        "posts": Post.objects.all(),
+    }
+
+    return render(request, "post_headers.html", dic_info)
+
+def post_text(request, id):
+    
+    post = Post.objects.get(id = id)
+    
+    comments = Comment.objects.filter(post_id = post)
+    
+    print(comments)    
+    
+    '''print("sdfsdfsd")
+    print(comments)'''
+    
+
+    dic_info ={     
+        "post_text": post.post_text,
+        "comments": 'sdsdsfs',
+    }
+
+    return render(request, "post_text.html", dic_info)    

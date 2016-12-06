@@ -1,0 +1,40 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+M = models.Model
+
+class Post(M):
+    """Публикация в блоге"""
+    date = models.DateField(verbose_name = u'Дата публикации')
+    header = models.CharField(verbose_name=u'Заголовок публикации', max_length=32, unique=False)
+    post_text = models.TextField(verbose_name=u'Содержимое публикации', blank = True)
+
+    def __str__(self):
+        return self.header
+
+class Comment(M):
+    """Комментарии к посту"""
+    post_id = models.ForeignKey('Post')
+    user_id = models.ForeignKey(User)
+    date = models.DateField(verbose_name = u'Дата комментария')
+    text = models.TextField(verbose_name='Текст комментария', blank=True)
+    
+    
+    '''def __str__(self):
+        return '{}-{}-{}'.format(self.post_id, self.user_id, self.date)'''
+
+"""
+    name = models.CharField(verbose_name=u'название', max_length=32, unique=True)
+    category = models.ForeignKey('Category')
+    image = models.ImageField(blank=True)
+    rating = models.PositiveIntegerField(verbose_name='рейтинг', default=0)
+    description = models.TextField(verbose_name='описание', blank=True)
+
+class Category(models.Model):
+    name = models.CharField(verbose_name=u'название', max_length=16, unique=True)
+    description = models.TextField(verbose_name='описание', blank=True)
+
+    def __str__(self):
+        return self.name
+"""

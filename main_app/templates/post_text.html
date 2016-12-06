@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}
+    История
+{% endblock %}
+{% block info %}
+    {% load static %}   
+    <div>
+    {{ post_text|safe }}
+    
+    <div id="comments_header" style="width: 100%; font-size: 150%; text-align: center; padding-top: 5px; padding-bottom: 5px; background: #777; color: #F0EFE2;">КОММЕНТАРИИ</div>
+    <div style="padding: 5px;">
+    <a href="/admin/create/comment/{{ post.id }}/{{ user.id }}">Оставить комментарий</a>
+    </div>
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="comment_box">   
+                
+                {% if comment.user_id == user %}
+                    <div class="comment_change">
+                    <a href="/admin/update/comment/{{ comment.id }}">Редактировать</a>
+                    <a href="/admin/delete/comment/{{ comment.id }}" 
+                    onclick="return confirm('Подтверждаете удаление записи?')">Удалить</a>
+                    </div>
+                {% endif %}                
+
+                {{ comment.text|safe }}
+                <br>
+                <div class="comment_underwrite">{{ comment.user_id }}  ({{ comment.date }})</div>
+            </div>
+        {% endfor %}    
+        
+        <div class="paginator_comments">
+            {% if comments.has_previous %}
+                <a href="?page={{ comments.previous_page_number }}#comments_header">Назад</a>
+            {% endif %}
+
+            <span >
+                Страница {{ comments.number }} из {{ comments.paginator.num_pages }}
+            </span>
+
+            {% if comments.has_next %}
+                <a href="?page={{ comments.next_page_number }}#comments_header">Вперёд</a>
+            {% endif %}
+        </div>
+
+    
+
+       
+    {% endif %}
+    </div>
+{% endblock %}
